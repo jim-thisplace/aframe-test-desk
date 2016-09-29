@@ -11,6 +11,7 @@
     "grunt-browserify": "^5.0.0",
     "grunt-cli": "~0.1.13",
     "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-uglify": "^2.0.0",
     "grunt-contrib-watch": "~0.6.0",
     "load-grunt-config": "^0.19.2",
     "load-grunt-tasks": "^3.5.0"
