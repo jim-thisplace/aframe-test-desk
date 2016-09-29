@@ -7,25 +7,51 @@
         <a-mixin id="d2" scale="0.5 0.5 0.5"></a-mixin>
 
         <!-- ASSETS -->
-        <a-asset-item id="banana" src="assets/banana.dae"></a-asset-item>
-        <a-asset-item id="bananaOBJ" src="assets/banana.obj"></a-asset-item>
-        <a-asset-item id="bananaMTL" src="assets/banana.mtl"></a-asset-item>
+        <a-asset-item id="standingdesk2OBJ" src="assets/standingdesk2.obj"></a-asset-item>
+        <a-asset-item id="standingdesk2MTL" src="assets/standingdesk2.mtl"></a-asset-item>
 
-        <a-asset-item id="frankstatuetteOBJ" src="assets/frank-statuette.obj"></a-asset-item>
-        <a-asset-item id="frankstatuetteMTL" src="assets/frank-statuette.mtl"></a-asset-item>
+        <a-asset-item id="macbook13OBJ" src="assets/macbook13.obj"></a-asset-item>
+        <a-asset-item id="macbook13MTL" src="assets/macbook13.mtl"></a-asset-item>
+
+        <a-asset-item id="applecinemadisplayOBJ" src="assets/applecinemadisplay.obj"></a-asset-item>
+        <a-asset-item id="applecinemadisplayMTL" src="assets/applecinemadisplay.mtl"></a-asset-item>
+
+        <a-asset-item id="laptopstandOBJ" src="assets/laptopstand.obj"></a-asset-item>
+        <a-asset-item id="laptopstandMTL" src="assets/laptopstand.mtl"></a-asset-item>
+
+        <a-asset-item id="keyboardOBJ" src="assets/keyboard.obj"></a-asset-item>
+        <a-asset-item id="keyboardMTL" src="assets/keyboard.mtl"></a-asset-item>
+
     </a-assets>
 
 
     <!-- CAMERA -->
-    <a-camera position="0 0 0"></a-camera>
-
+    <a-camera camera="userHeight:1.6" position="3 1.6 0" rotation="0 90 0" look-controls=""
+              wasd-controls="fly:true"></a-camera>
 
     <!-- SCENE -->
-    <a-entity collada-model="#banana"></a-entity>
-    <a-obj-model src="#bananaOBJ" mtl="#bananaMTL"></a-obj-model>
-    <a-obj-model src="#frankstatuetteOBJ" mtl="#frankstatuetteMTL"></a-obj-model>
+    <a-obj-model obj-model="obj:#laptopstandOBJ;mtl:#laptopstandMTL" rotation="0 -130.63437728982768 0" mixin="d2"
+                 position="1.21 1.01 -3.33" scale="0.4 0.4 0.4" material=""></a-obj-model>
 
-    <a-plane width="6" height="6" rotation="-90 0 0" src="assets/grid.png"></a-plane>
+    <a-obj-model obj-model="obj:#applecinemadisplayOBJ;mtl:#applecinemadisplayMTL"
+                 rotation="0 -84.79775367936183 0"
+                 mixin="d2"
+                 position="-0.41 0.96 -3.42"
+                 scale="0.4 0.4 0.4"></a-obj-model>
+
+    <a-obj-model obj-model="obj:#standingdesk2OBJ;mtl:#standingdesk2MTL"
+                 rotation="0 -90 0"
+                 mixin="d2"
+                 position="0 0.1 -3"></a-obj-model>
+
+    <a-obj-model obj-model="obj:#macbook13OBJ;mtl:#macbook13MTL"
+                 rotation="-6.302535746439055 139.80170201192087 1.1459155902616465" mixin="d2"
+                 position="1.21 1.26 -3.15" scale="0.4 0.4 0.4" material=""></a-obj-model>
+
+    <a-obj-model obj-model="obj:#keyboardOBJ;mtl:#keyboardMTL" rotation="0 -83.6518380891002 0" mixin="d2"
+                 position="0.08 1.01 -2.82" scale="0.2 0.2 0.2" material=""></a-obj-model>
+
+    <a-plane width="8" height="8" rotation="-90 0 0" src="assets/woodfloor.jpg" position="0 0 -2"></a-plane>
     <a-sky color="#ECECEC"></a-sky>
 
 </a-scene>

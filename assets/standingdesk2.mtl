@@ -1,11 +1,11 @@
-# Blender MTL File: 'standing-desk.blend'
+# Blender MTL File: 'standingdesk2.blend'
 # Material Count: 2
 
-newmtl Material
+newmtl Material.001
 Ns 96.078431
 Ka 1.000000 1.000000 1.000000
-Kd 0.640000 0.640000 0.640000
-Ks 0.500000 0.500000 0.500000
+Kd 0.661769 0.661769 0.661769
+Ks 0.438776 0.438776 0.438776
 Ke 0.000000 0.000000 0.000000
 Ni 1.000000
 d 1.000000
