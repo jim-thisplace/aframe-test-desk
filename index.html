@@ -2,8 +2,32 @@
 <body>
 
 <a-scene>
-    <a-box color="#6173F4" opacity="0.8" depth="2" position="1 1 0"></a-box>
+    <a-assets>
+        <!-- MIXINS -->
+        <a-mixin id="d2" scale="0.5 0.5 0.5"></a-mixin>
+
+        <!-- ASSETS -->
+        <a-asset-item id="banana" src="assets/banana.dae"></a-asset-item>
+        <a-asset-item id="bananaOBJ" src="assets/banana.obj"></a-asset-item>
+        <a-asset-item id="bananaMTL" src="assets/banana.mtl"></a-asset-item>
+
+        <a-asset-item id="frankstatuetteOBJ" src="assets/frank-statuette.obj"></a-asset-item>
+        <a-asset-item id="frankstatuetteMTL" src="assets/frank-statuette.mtl"></a-asset-item>
+    </a-assets>
+
+
+    <!-- CAMERA -->
+    <a-camera position="0 0 0"></a-camera>
+
+
+    <!-- SCENE -->
+    <a-entity collada-model="#banana"></a-entity>
+    <a-obj-model src="#bananaOBJ" mtl="#bananaMTL"></a-obj-model>
+    <a-obj-model src="#frankstatuetteOBJ" mtl="#frankstatuetteMTL"></a-obj-model>
+
+    <a-plane width="6" height="6" rotation="-90 0 0" src="assets/grid.png"></a-plane>
     <a-sky color="#ECECEC"></a-sky>
+
 </a-scene>
 
 </body>

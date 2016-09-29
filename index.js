@@ -1,6 +1,5 @@
-require('aframe');
+var AFrame = require('aframe');
 
-function onDOMContentLoaded() {
-}
+function onDOMContentLoaded() {}
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
