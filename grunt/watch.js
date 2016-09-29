@@ -4,10 +4,11 @@ module.exports = {
         livereload : false
     },
     html    : {
-        files : ['index.html']
+        files : ['*.html']
     },
-    js      : {
-        files   : ["*.js"],
+
+    js : {
+        files   : ["index.js"],
         "tasks" : ["browserify"]
     }
 };
