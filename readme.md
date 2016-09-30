@@ -14,6 +14,8 @@ npm i ; grunt
 - Ctrl + Alt + I opens the AFrame Inspector which you can use to rearrange entities in the scene. You can
 copy the resultant HTML
 
+- Youtube Videos need to be downloaded as MP4 or [proxied to be viewable as textures](http://stackoverflow.com/questions/36298195/how-to-render-youtube-videos-as-a-texture-in-a-frame)
+
 ## Blender Recap
 
 - [Blender HotKeys](https://wiki.blender.org/index.php/Doc:2.4/Reference/Hotkeys/Edit)
