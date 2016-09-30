@@ -22,12 +22,15 @@
         <a-asset-item id="keyboardOBJ" src="assets/keyboard.obj"></a-asset-item>
         <a-asset-item id="keyboardMTL" src="assets/keyboard.mtl"></a-asset-item>
 
+        <!-- VIDEO -->
+        <video id="hackerWEBM" autoplay loop="true" src="assets/hacker.webm"></video>
     </a-assets>
 
 
     <!-- CAMERA -->
     <a-camera camera="userHeight:1.6" position="3 1.6 0" rotation="0 90 0" look-controls=""
               wasd-controls="fly:true"></a-camera>
+
 
     <!-- SCENE -->
     <a-obj-model obj-model="obj:#laptopstandOBJ;mtl:#laptopstandMTL" rotation="0 -130.63437728982768 0" mixin="d2"
@@ -49,12 +52,19 @@
                  position="1.21 1.26 -3.15" scale="0.4 0.4 0.4" material=""></a-obj-model>
 
     <a-obj-model obj-model="obj:#keyboardOBJ;mtl:#keyboardMTL" rotation="0 -83.6518380891002 0" mixin="d2"
-                 position="0.08 1.01 -2.82" scale="0.2 0.2 0.2" material=""></a-obj-model>
+                 position="0.08 1.01 -2.82" scale="0.2 0.2 0.2" material="">
+    </a-obj-model>
+
+    <a-video src="#hackerWEBM" width="16" height="9" position="-0.42 1.7 -3.24"
+             material="color:#FFF;shader:flat;side:double;transparent:true;src:#hackerWEBM"
+             geometry="primitive:plane;width:16;height:9" rotation="-0.5729577951308232 5.19 0" scale="0.11 0.1 0.1"
+             mixin="null"></a-video>
+
 
     <a-plane width="8" height="8" rotation="-90 0 0" src="assets/woodfloor.jpg" position="0 0 -2"></a-plane>
-    <a-sky color="#ECECEC"></a-sky>
 
 </a-scene>
+
 
 </body>
 <script src="index.dist.js"></script>
