@@ -14,11 +14,11 @@ function $(selector) {
 
 function onDOMContentLoaded() {
     var videoEl = $('video');
+    window.addEventListener('keydown', onVideoClick);
 }
 
-function onKeyDown() {
-
+function onVideoClick() {
+    resetAndPlayVideo();
 }
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
-window.addEventListener('keydown', onKeyDown);
