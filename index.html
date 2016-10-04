@@ -14,13 +14,38 @@
 
     <!-- CAMERA -->
     <a-camera>
-        <a-cursor raycaster="far: 20; interval: 1000; objects: .clickable" cursor="maxDistance: 30; fuse: true"
+        <a-cursor raycaster="far: 20; interval: 1000; objects: .clickable"
                   material="color: #aaff22; shader: flat; opacity: 0.5"
         >
         </a-cursor>
     </a-camera>
 
-    <!--<a-plane width="8" height="8" rotation="-90 0 0" src="assets/woodfloor.jpg" position="0 0 -2"></a-plane>-->
+    <!-- SCENE -->
+    <a-plane
+            id="floor"
+            rotation="-90 51 0" position="0.73 -7.98 5.19"
+            material="src:;transparent:true;opacity:0.58;color:#ff8260"
+            geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
+
+    <a-plane id="ceiling" rotation="90 51 0" position="6.1 7.1 5.92"
+             material="src:;transparent:true;opacity:0.58;color:#ff8260"
+             geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
+
+    <a-plane
+            id="window"
+            rotation="0 51 0" position="-8.08 -7.98 -1.75" material="src:;transparent:true;opacity:0.58;color:#4b7dfc"
+            geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
+
+    <a-plane id="kitchen" rotation="0 -39 0" position="14.63 -7.98 -4.26"
+             material="src:;transparent:true;opacity:0.58;color:#6afbe4"
+             geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
+
+    <a-cylinder id="bikestand" material="color:#ff82f1;metalness:0.28;roughness:1"
+                geometry="primitive:cylinder;height:11.620000000000001;radius:0.24" position="-3.09 0.38 14.77">
+
+    </a-cylinder>
+
+    </a-cylinder>
 
     <a-entity id="skybox" cubemap="folder:assets/room/"></a-entity>
 

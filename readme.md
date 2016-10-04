@@ -33,6 +33,7 @@ copy the resultant HTML
   -->   indicates direction of camera relative to the inside faces of
         the cubemap
 ```
+- iOS: make sure you clear the cache. textures are cached requests.
 
 ## Blender Recap
 
