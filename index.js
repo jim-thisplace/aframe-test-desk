@@ -1,24 +1,20 @@
-var AFrame = require('aframe');
-
-var videoEl;
-
-function resetAndPlayVideo() {
-    videoEl.pause();
-    videoEl.currentTime = 0;
-    videoEl.play();
-}
+var assetsEl;
 
 function $(selector) {
     return document.querySelector(selector);
 }
 
 function onDOMContentLoaded() {
-    var videoEl = $('video');
-    window.addEventListener('keydown', onVideoClick);
+    assetsEl = $('a-assets');
 }
 
-function onVideoClick() {
-    resetAndPlayVideo();
+function addTexture(image, id, onLoad) {
+    var img = new Image();
+    assetsEl.appendChild(img);
+    img.id     = id;
+    img.src    = dURL;
+    img.onload = onLoad;
 }
+
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);

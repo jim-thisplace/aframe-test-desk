@@ -1,106 +1,32 @@
 <html>
+<head>
+    <script src="aframe.0.3.0.min.js"></script>
+    <script src="aframe-cubemap-component.js"></script>
+    <script src="index.dist.js"></script>
+</head>
 <body>
 
 <a-scene>
     <a-assets>
-        <!-- MIXINS -->
-        <a-mixin id="d2" scale="0.5 0.5 0.5"></a-mixin>
-        <a-mixin id="scaleAnimation1" repeat="-1" from="0.9" to="1.1" dur="500" direction="alternate-reverse"
-                 fill="both"></a-mixin>
 
-        <!-- ASSETS -->
-        <a-asset-item id="standingdesk2OBJ" src="assets/standingdesk2.obj"></a-asset-item>
-        <a-asset-item id="standingdesk2MTL" src="assets/standingdesk2.mtl"></a-asset-item>
-
-        <a-asset-item id="macbook13OBJ" src="assets/macbook13.obj"></a-asset-item>
-        <a-asset-item id="macbook13MTL" src="assets/macbook13.mtl"></a-asset-item>
-
-        <a-asset-item id="applecinemadisplayOBJ" src="assets/applecinemadisplay.obj"></a-asset-item>
-        <a-asset-item id="applecinemadisplayMTL" src="assets/applecinemadisplay.mtl"></a-asset-item>
-
-        <a-asset-item id="laptopstandOBJ" src="assets/laptopstand.obj"></a-asset-item>
-        <a-asset-item id="laptopstandMTL" src="assets/laptopstand.mtl"></a-asset-item>
-
-        <a-asset-item id="keyboardOBJ" src="assets/keyboard.obj"></a-asset-item>
-        <a-asset-item id="keyboardMTL" src="assets/keyboard.mtl"></a-asset-item>
-
-
-        <img src="assets/questionmarkblock.jpg" id="questionmarkblockJPG">
-        <img src="assets/apple-keyboard.png" id="applekeyboardPNG">
-
-        <!-- VIDEO -->
-        <video id="hackerMP4" autostart="false" autoplay="false" loop="true" src="assets/hacker.mp4"></video>
     </a-assets>
 
 
     <!-- CAMERA -->
-    <a-camera camera="userHeight:1.6" position="3 1.6 0" rotation="0 90 0" look-controls=""
-              wasd-controls="fly:true">
+    <a-camera>
         <a-cursor raycaster="far: 20; interval: 1000; objects: .clickable" cursor="maxDistance: 30; fuse: true"
                   material="color: #aaff22; shader: flat; opacity: 0.5"
         >
-            <a-animation begin="fusing" easing="ease-in" attribute="scale"
-                         fill="forwards" from="1 1 1" to="0.1 0.1 0.1" dur="500"></a-animation>
         </a-cursor>
     </a-camera>
-    <a-entity line="color: red; path: -1 1 0, -1 0.5 0, -1 0 0"></a-entity>
 
+    <!--<a-plane width="8" height="8" rotation="-90 0 0" src="assets/woodfloor.jpg" position="0 0 -2"></a-plane>-->
 
-    <!-- SCENE -->
-    <a-obj-model obj-model="obj:#laptopstandOBJ;mtl:#laptopstandMTL" rotation="0 -130.63437728982768 0" mixin="d2"
-                 position="1.21 1.01 -3.33" scale="0.4 0.4 0.4" material=""></a-obj-model>
-
-    <a-obj-model obj-model="obj:#applecinemadisplayOBJ;mtl:#applecinemadisplayMTL"
-                 class="clickable"
-                 rotation="0 -84.79775367936183 0"
-                 mixin="d2"
-                 position="-0.41 0.96 -3.42"
-                 scale="0.4 0.4 0.4">
-
-        <a-video src="#hackerMP4" width="16" height="9" geometry="primitive:plane;width:16;height:9"
-        position="0.45 1.85 0.04"
-        rotation="-0.57 89.95 0" scale="0.25 0.23 0.25">
-        </a-video>
-
-    </a-obj-model>
-
-
-    <a-obj-model obj-model="obj:#standingdesk2OBJ;mtl:#standingdesk2MTL"
-                 rotation="0 -90 0"
-                 mixin="d2"
-                 position="0 0.1 -3"></a-obj-model>
-
-    <a-obj-model obj-model="obj:#macbook13OBJ;mtl:#macbook13MTL"
-                 rotation="-6.302535746439055 139.80170201192087 1.1459155902616465" mixin="d2"
-                 position="1.21 1.26 -3.15" scale="0.4 0.4 0.4" material=""></a-obj-model>
-
-    <a-obj-model obj-model="obj:#keyboardOBJ" rotation="0 -83.6518380891002 0" mixin="d2"
-                 position="0.08 1.01 -2.82" scale="0.2 0.2 0.2">
-        <a-plane position="0 0.03 -0.01" rotation="-91.36958485988514 -93 -87.22"
-                 geometry="primitive:plane;height:6.2;width:2.04" scale="1 1 1" visible="true"
-                 material="src:#applekeyboardPNG"></a-plane>
-    </a-obj-model>
-
-    <a-box id="questionmarkblock" geometry="primitive:box;skipCache:false;buffer:true;width:1"
-           position="-0.67 2.83 -1.87" visible="true"
-           material="src:#questionmarkblockJPG;metalness:0.18;roughness:1;opacity:1" rotation="0 46.19068049741702 0"
-           mixin="null d2">
-
-        <a-animation attribute="rotation" repeat="indefinite" from="0 0 0" to="0 360 0" dur="4000" easing="linear"
-                     fill="both"></a-animation>
-
-        <a-animation attribute="geometry.width" mixin="scaleAnimation1"></a-animation>
-        <a-animation attribute="geometry.height" mixin="scaleAnimation1"></a-animation>
-        <a-animation attribute="geometry.depth" mixin="scaleAnimation1"></a-animation>
-
-    </a-box>
-
-
-    <a-plane width="8" height="8" rotation="-90 0 0" src="assets/woodfloor.jpg" position="0 0 -2"></a-plane>
+    <a-entity id="skybox" cubemap="folder:/assets/room/"></a-entity>
 
 </a-scene>
 
 
 </body>
-<script src="index.dist.js"></script>
+
 </html>
