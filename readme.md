@@ -15,6 +15,24 @@ npm i ; grunt
 copy the resultant HTML
 
 - Youtube Videos need to be downloaded as MP4 or [proxied to be viewable as textures](http://stackoverflow.com/questions/36298195/how-to-render-youtube-videos-as-a-texture-in-a-frame)
+- [`<script/>` after `</body>` produces undefined behavior and should be avoided.](http://stackoverflow.com/q/3037725/4921124)
+- aframe-cubemap-component order diagram:
+
+```
+   px   py
+     \  |
+      \ |
+       \|
+ pz-----*----> nz
+        |\
+        | \
+        |  \
+        ny  nx
+
+
+  -->   indicates direction of camera relative to the inside faces of
+        the cubemap
+```
 
 ## Blender Recap
 
