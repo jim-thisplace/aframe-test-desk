@@ -1,6 +1,6 @@
 var ID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
-var DEVICE_ID = localStorage.getItem('controllerId') || generateDeviceID();
+var DEVICE_ID = localStorage.getItem('deviceId') || generateDeviceID();
 
 /**
  * @param {number} [length]
@@ -11,6 +11,9 @@ function generateDeviceID(length) {
     for (length = length || 5; length > 0; length--) {
         id += ID_CHARS[Math.floor(ID_CHARS.length * Math.random())];
     }
+
+    localStorage.setItem('deviceId', id);
+
     return id;
 }
 
@@ -43,7 +46,7 @@ function onSessionsValue() {
         ref.set(data);
 
         el.doalpha.innerHTML = data.do.alpha;
-        el.dobeta.innerHTML = data.do.beta;
+        el.dobeta.innerHTML  = data.do.beta;
         el.dogamma.innerHTML = data.do.gamma;
 
         el.dmx.innerHTML = data.dm.x;
