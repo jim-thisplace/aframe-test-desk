@@ -1,6 +1,6 @@
-var DEVICE_ID = localStorage.getItem('controllerId') || generateDeviceID();
-
 var ID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
+
+var DEVICE_ID = localStorage.getItem('controllerId') || generateDeviceID();
 
 /**
  * @param {number} [length]
