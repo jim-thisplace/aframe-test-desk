@@ -22,16 +22,7 @@ function onSessionsValue() {
 
     var el = {
         deviceId        : '#deviceId',
-        firebase_status : '#firebase_status',
-        doalpha         : '#doalpha',
-        dobeta          : '#dobeta',
-        dogamma         : '#dogamma',
-        dmx             : '#dmx',
-        dmy             : '#dmy',
-        dmz             : '#dmz',
-        dmgx            : '#dmgx',
-        dmgy            : '#dmgy',
-        dmgz            : '#dmgz'
+        firebase_status : '#firebase_status'
     };
 
     // Run all values as selectors and save in place
@@ -39,22 +30,6 @@ function onSessionsValue() {
 
     el.deviceId.innerHTML        = DEVICE_ID;
     el.firebase_status.innerHTML = '<span style="color: green">Connected</span>';
-
-    var gn = new GyroNorm();
-
-    function writeDebugInfo(data) {
-        el.doalpha.innerHTML = data.do.alpha;
-        el.dobeta.innerHTML  = data.do.beta;
-        el.dogamma.innerHTML = data.do.gamma;
-
-        el.dmx.innerHTML = data.dm.x;
-        el.dmy.innerHTML = data.dm.y;
-        el.dmz.innerHTML = data.dm.z;
-
-        el.dmgx.innerHTML = data.dm.gx;
-        el.dmgy.innerHTML = data.dm.gy;
-        el.dmgz.innerHTML = data.dm.gz;
-    }
 
     function onGyroNormData(data) {
         ref.set({
