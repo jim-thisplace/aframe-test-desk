@@ -2,6 +2,10 @@ var ID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
 var DEVICE_ID = localStorage.getItem('deviceId') || generateDeviceID();
 
+if(DEVICE_ID === 'null') {
+    DEVICE_ID = generateDeviceID();
+}
+
 /**
  * @param {number} [length]
  * @returns {string}
