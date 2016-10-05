@@ -8,11 +8,7 @@ function $(selector) {
 function onSessionsValue(data) {
     var gnData = data.val();
 
-    controlledBoxEl.setAttribute('rotation', {
-        x : gnData.do.beta,
-        y : gnData.do.alpha,
-        z : gnData.do.gamma * -1
-    });
+    controlledBoxEl.setAttribute('rotation', gnData.rotation);
 }
 
 function onDOMContentLoaded() {

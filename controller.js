@@ -42,7 +42,7 @@ function onSessionsValue() {
 
     var gn = new GyroNorm();
 
-    function writeDebugInfo(data){
+    function writeDebugInfo(data) {
         el.doalpha.innerHTML = data.do.alpha;
         el.dobeta.innerHTML  = data.do.beta;
         el.dogamma.innerHTML = data.do.gamma;
@@ -57,8 +57,13 @@ function onSessionsValue() {
     }
 
     function onGyroNormData(data) {
-        //writeDebugInfo(data);
-        ref.set(data);
+        ref.set({
+            rotation : [
+                'x : ' + data.do.beta,
+                'y : ' + data.do.alpha,
+                'z : ' + data.do.gamma * -1
+            ].join(';')
+        });
     }
 
     gn
