@@ -1,0 +1,59 @@
+<html>
+<head>
+    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
+    <script src="lib/gyronorm.complete.min.js"></script>
+    <script src="controller.js"></script>
+</head>
+<body>
+<h3>
+    Your device is a controller with the ID
+    <div id="deviceId">-</div>
+</h3>
+
+<!--<button id="generateNewDeviceID">Generate new device id</button>-->
+
+<h4>Network status:</h4>
+<table>
+    <tr>
+        <th>Firebase</th>
+    </tr>
+    <tr>
+        <td id="firebase_status">Not connected</td>
+    </tr>
+</table>
+
+<h4>Info:</h4>
+<table cellpadding="4" cellspacing="2">
+    <tr>
+        <th>do.alpha</th>
+        <th>do.beta</th>
+        <th>do.gamma</th>
+    </tr>
+    <tr>
+        <td id="doalpha">-</td>
+        <td id="dobeta">-</td>
+        <td id="dogamma">-</td>
+    </tr>
+    <tr>
+        <th>dm.x</th>
+        <th>dm.y</th>
+        <th>dm.z</th>
+    </tr>
+    <tr>
+        <td id="dmx">-</td>
+        <td id="dmy">-</td>
+        <td id="dmz">-</td>
+    </tr>
+    <tr>
+        <th>dm.gx</th>
+        <th>dm.gy</th>
+        <th>dm.gz</th>
+    </tr>
+    <tr>
+        <td id="dmgx">-</td>
+        <td id="dmgy">-</td>
+        <td id="dmgz">-</td>
+    </tr>
+</table>
+</body>
+</html>

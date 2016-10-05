@@ -34,6 +34,10 @@ copy the resultant HTML
         the cubemap
 ```
 - iOS: make sure you clear the cache. textures are cached requests.
+- Use Firebase as a fast DB to sync controllers via network, if no bluetooth/ direct input is available.
+[Firebase console](https://console.firebase.google.com/)
+
+- [Dynamic mesh modification](https://github.com/mrdoob/three.js/issues/1091)
 
 ## Blender Recap
 

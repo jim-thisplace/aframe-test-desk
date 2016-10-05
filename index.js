@@ -1,11 +1,13 @@
 var assetsEl;
+var controlledBoxEl;
 
 function $(selector) {
     return document.querySelector(selector);
 }
 
 function onDOMContentLoaded() {
-    assetsEl = $('a-assets');
+    assetsEl        = $('a-assets');
+    controlledBoxEl = $('#controlledBox');
 }
 
 function addTexture(image, id, onLoad) {
@@ -15,6 +17,5 @@ function addTexture(image, id, onLoad) {
     img.src    = dURL;
     img.onload = onLoad;
 }
-
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
