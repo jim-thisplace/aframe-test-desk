@@ -8,7 +8,7 @@ module.exports = {
     },
 
     js : {
-        files   : ["index.js"],
-        "tasks" : ["browserify", "uglify"]
+        files   : ["index.js"]
+    //    "tasks" : ["browserify", "uglify"]
     }
 };

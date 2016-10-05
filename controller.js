@@ -57,7 +57,7 @@ function onSessionsValue() {
     }
 
     function onGyroNormData(data) {
-        writeDebugInfo(data);
+        //writeDebugInfo(data);
         ref.set(data);
     }
 
