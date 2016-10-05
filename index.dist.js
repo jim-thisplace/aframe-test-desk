@@ -1,1 +1,36 @@
-!function a(b,c,d){function e(g,h){if(!c[g]){if(!b[g]){var i="function"==typeof require&&require;if(!h&&i)return i(g,!0);if(f)return f(g,!0);var j=new Error("Cannot find module '"+g+"'");throw j.code="MODULE_NOT_FOUND",j}var k=c[g]={exports:{}};b[g][0].call(k.exports,function(a){var c=b[g][1][a];return e(c?c:a)},k,k.exports,a,b,c,d)}return c[g].exports}for(var f="function"==typeof require&&require,g=0;g<d.length;g++)e(d[g]);return e}({1:[function(a,b,c){function d(a){return document.querySelector(a)}function e(a){var b=a.val();h.setAttribute("rotation",{x:b.do.beta,y:b.do.alpha,z:b.do.gamma*-1})}function f(){g=d("a-assets"),h=d("#controlledBox");var a=prompt("enter the controller device ID",localStorage.getItem("deviceId"));localStorage.setItem("deviceId",a),firebase.database().ref("sessions/"+a).on("value",e)}var g,h;document.addEventListener("DOMContentLoaded",f)},{}]},{},[1]);
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+var assetsEl;
+var controlledBoxEl;
+
+function $(selector) {
+    return document.querySelector(selector);
+}
+
+function onSessionsValue(data) {
+    var gnData = data.val();
+
+    controlledBoxEl.setAttribute('rotation', gnData.rotation);
+}
+
+function onDOMContentLoaded() {
+    assetsEl        = $('a-assets');
+    controlledBoxEl = $('#controlledBox');
+
+    var deviceId = prompt('enter the controller device ID', localStorage.getItem('deviceId'));
+
+    localStorage.setItem('deviceId', deviceId);
+
+    firebase.database().ref('sessions/' + deviceId)
+        .on('value', onSessionsValue);
+}
+
+function addTexture(image, id, onLoad) {
+    var img = new Image();
+    assetsEl.appendChild(img);
+    img.id     = id;
+    img.src    = dURL;
+    img.onload = onLoad;
+}
+
+document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+},{}]},{},[1]);

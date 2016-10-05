@@ -59,10 +59,10 @@ function onSessionsValue() {
     function onGyroNormData(data) {
         ref.set({
             rotation : [
-                'x : ' + data.do.beta,
-                'y : ' + data.do.alpha,
-                'z : ' + data.do.gamma * -1
-            ].join(';')
+                data.do.beta,
+                data.do.alpha,
+                data.do.gamma * -1
+            ].join(' ')
         });
     }
 
