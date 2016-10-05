@@ -8,6 +8,8 @@ function $(selector) {
 function onDOMContentLoaded() {
     assetsEl        = $('a-assets');
     controlledBoxEl = $('#controlledBox');
+
+
 }
 
 function addTexture(image, id, onLoad) {

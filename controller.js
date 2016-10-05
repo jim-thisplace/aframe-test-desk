@@ -42,9 +42,7 @@ function onSessionsValue() {
 
     var gn = new GyroNorm();
 
-    function onGyroNormData(data) {
-        ref.set(data);
-
+    function writeDebugInfo(data){
         el.doalpha.innerHTML = data.do.alpha;
         el.dobeta.innerHTML  = data.do.beta;
         el.dogamma.innerHTML = data.do.gamma;
@@ -56,6 +54,11 @@ function onSessionsValue() {
         el.dmgx.innerHTML = data.dm.gx;
         el.dmgy.innerHTML = data.dm.gy;
         el.dmgz.innerHTML = data.dm.gz;
+    }
+
+    function onGyroNormData(data) {
+        writeDebugInfo(data);
+        ref.set(data);
     }
 
     gn
