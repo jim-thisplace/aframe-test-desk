@@ -1,3 +1,11 @@
+/**
+ * @param {string} s
+ * @returns {Element|Element[]|undefined}
+ */
+function $(s){
+    return document.querySelector(s);
+}
+
 var ID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
 var DEVICE_ID = localStorage.getItem('deviceId') || generateDeviceID();
@@ -21,19 +29,18 @@ function generateDeviceID(length) {
     return id;
 }
 
+function printDeviceId(){
+    $('#deviceId').innerHTML = DEVICE_ID;
+}
+
 function onSessionsValue() {
     var ref = firebase.database().ref('sessions/' + DEVICE_ID);
-
-    var el = {
-        deviceId        : '#deviceId',
-        firebase_status : '#firebase_status'
-    };
 
     // Run all values as selectors and save in place
     Object.keys(el).forEach(function (k) { el[k] = document.querySelector(el[k]);});
 
-    el.deviceId.innerHTML        = DEVICE_ID;
-    el.firebase_status.innerHTML = '<span style="color: green">Connected</span>';
+    printDeviceId();
+    $('#firebase_status').innerHTML = '<span style="color: green">Connected</span>';
 
     function onGyroNormData(data) {
         ref.set({
