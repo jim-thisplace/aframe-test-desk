@@ -36,9 +36,6 @@ function printDeviceId(){
 function onSessionsValue() {
     var ref = firebase.database().ref('sessions/' + DEVICE_ID);
 
-    // Run all values as selectors and save in place
-    Object.keys(el).forEach(function (k) { el[k] = document.querySelector(el[k]);});
-
     printDeviceId();
     $('#firebase_status').innerHTML = '<span style="color: green">Connected</span>';
 
