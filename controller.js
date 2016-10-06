@@ -111,7 +111,7 @@ function initXYTX(ref) {
                 dx : -dX,
                 dy : -dY
             });
-            
+
             prevDY = dY;
             prevDX = dX;
         }

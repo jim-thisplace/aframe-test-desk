@@ -16,8 +16,6 @@ function onSessionsValue(data) {
     var res = data.val();
 
     if (res.isTouchEnd) {
-        lastDx = res.dx * SCALE_FACTOR;
-        lastDy = res.dy * SCALE_FACTOR;
 
         bikestandPosition.x += lastDx;
         bikestandPosition.z += lastDy;
