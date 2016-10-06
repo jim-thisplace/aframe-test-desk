@@ -59,6 +59,7 @@ function connect() {
 
     printDeviceId();
     $('#firebase_status').innerHTML = '<span style="color: green">Connected</span>';
+    $('#deviceMode').innerHTML = DEVICE_MODE;
 
     if (DEVICE_MODE === 'gyronorm') {
         initGyroNormTX(ref);
