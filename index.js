@@ -7,22 +7,31 @@ function $(selector) {
 }
 
 var bikestandPosition;
+var lastDx = 0;
+var lastDy = 0;
+
+var SCALE_FACTOR = 0.15;
 
 function onSessionsValue(data) {
     var res = data.val();
 
     if (res.isTouchEnd) {
-        bikestandPosition[0] += res.dx * 0.15;
-        bikestandPosition[2] += res.dy * 0.15;
+        lastDx = res.dx * SCALE_FACTOR;
+        lastDy = res.dy * SCALE_FACTOR;
 
-        bikestandEl.setAttribute('position', bikestandPosition.join(' '));
+        bikestandPosition.x += lastDx;
+        bikestandPosition.z += lastDy;
+
     } else {
+        lastDx = res.dx * SCALE_FACTOR;
+        lastDy = res.dy * SCALE_FACTOR;
 
-        bikestandEl.setAttribute('position', [
-            bikestandPosition[0] + res.dx * 0.15,
-            0,
-            bikestandPosition[2] + res.dy * 0.15
-        ].join(' '));
+        bikestandEl.setAttribute('position', {
+            x : bikestandPosition.x + lastDx,
+            y : 0,
+            z : bikestandPosition.z + lastDy
+        });
+
     }
 
 }
@@ -34,14 +43,12 @@ function onDOMContentLoaded() {
 
     var deviceId = location.hash.slice(1) || localStorage.getItem('deviceId');
 
-    bikestandPosition = bikestandEl.getAttribute('position').split(' ')
-        .map(parseFloat);
+    bikestandPosition = bikestandEl.getAttribute('position');
 
     localStorage.setItem('deviceId', deviceId);
 
     firebase.database().ref('sessions/' + deviceId)
         .on('value', onSessionsValue);
 }
-
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);

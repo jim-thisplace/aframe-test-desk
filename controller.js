@@ -7,7 +7,7 @@ function throttle(fn, threshhold, scope) {
     return function () {
         var context = scope || this;
 
-        var now = +new Date,
+        var now  = +new Date,
             args = arguments;
         if (last && now < last + threshhold) {
             // hold on to it
@@ -107,33 +107,39 @@ function initXYTX(ref) {
             dY = t[0].pageY - originY;
 
             // Send update
-            if (prevDX !== dX || prevDY !== dY) {
-                ref.set({
-                    dx : -dX,
-                    dy : -dY
-                });
-            }
-
+            ref.set({
+                dx : -dX,
+                dy : -dY
+            });
+            
             prevDY = dY;
             prevDX = dX;
         }
     }
 
-    function onTouchEnd() {
-        ref.set({
-            dx         : dX,
-            dy         : dY,
-            isTouchEnd : true
-        });
+    function onTouchEnd(e) {
+        var t = e.changedTouches;
 
-        dX     = 0;
-        prevDX = 0;
-        dY     = 0;
-        prevDY = 0;
+        // Support single touch point
+        if (t.length === 1) {
+            dX = t[0].pageX - originX;
+            dY = t[0].pageY - originY;
+
+            ref.set({
+                dx         : dX,
+                dy         : dY,
+                isTouchEnd : true
+            });
+
+            dX     = 0;
+            prevDX = 0;
+            dY     = 0;
+            prevDY = 0;
+        }
     }
 
     window.addEventListener('touchstart', onTouchStart);
-    window.addEventListener('touchmove', throttle(onTouchMove, 25));
+    window.addEventListener('touchmove', throttle(onTouchMove, 10));
     window.addEventListener('touchend', onTouchEnd);
 }
 
