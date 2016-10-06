@@ -2,15 +2,15 @@
  * @param {string} s
  * @returns {Element|Element[]|undefined}
  */
-function $(s){
+function $(s) {
     return document.querySelector(s);
 }
 
 var ID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
-var DEVICE_ID = localStorage.getItem('deviceId') || generateDeviceID();
+var DEVICE_ID = localStorage.getItem('deviceId');
 
-if(DEVICE_ID === 'null') {
+if (!DEVICE_ID || DEVICE_ID === 'null') {
     DEVICE_ID = generateDeviceID();
 }
 
@@ -20,22 +20,22 @@ if(DEVICE_ID === 'null') {
  */
 function generateDeviceID(length) {
     var id = '';
-    for (length = length || 5; length > 0; length--) {
+    for (length = length || 4; length > 0; length--) {
         id += ID_CHARS[Math.floor(ID_CHARS.length * Math.random())];
     }
 
     localStorage.setItem('deviceId', id);
+    printDeviceId();
 
     return id;
 }
 
-function printDeviceId(){
+function printDeviceId() {
     $('#deviceId').innerHTML = DEVICE_ID;
 }
 
-function onSessionsValue() {
+function connect() {
     var ref = firebase.database().ref('sessions/' + DEVICE_ID);
-
 
     printDeviceId();
     $('#firebase_status').innerHTML = '<span style="color: green">Connected</span>';
@@ -62,9 +62,14 @@ function onSessionsValue() {
         });
 }
 
+function onGenerateNewDeviceIDClick(){
+    generateDeviceID();
+    window.reload();
+}
+
 function onDOMContentLoaded() {
-    firebase.database().ref('sessions')
-        .on('value', onSessionsValue);
+    connect();
+    $('#generateNewDeviceID').onclick = onGenerateNewDeviceIDClick;
 }
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);
