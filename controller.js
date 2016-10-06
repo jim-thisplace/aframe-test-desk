@@ -59,7 +59,7 @@ function connect() {
 
     printDeviceId();
     $('#firebase_status').innerHTML = '<span style="color: green">Connected</span>';
-    $('#deviceMode').innerHTML = DEVICE_MODE;
+    $('#deviceMode').innerHTML      = DEVICE_MODE;
 
     if (DEVICE_MODE === 'gyronorm') {
         initGyroNormTX(ref);
@@ -134,7 +134,11 @@ function initGyroNormTX(ref) {
                 data.do.beta,
                 data.do.alpha,
                 data.do.gamma * -1
-            ].join(' ')
+            ].join(' '),
+
+            dx : data.dm.x,
+            dy : data.dm.y,
+            dz : data.dm.z
         });
     }
 
