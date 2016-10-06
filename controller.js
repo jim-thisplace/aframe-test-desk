@@ -1,17 +1,25 @@
 // Utils
 
-function _debounce(func, wait, immediate) {
-    var timeout;
+function throttle(fn, threshhold, scope) {
+    threshhold || (threshhold = 250);
+    var last,
+        deferTimer;
     return function () {
-        var context = this, args = arguments;
-        var later   = function () {
-            timeout = null;
-            if (!immediate) func.apply(context, args);
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
+        var context = scope || this;
+
+        var now = +new Date,
+            args = arguments;
+        if (last && now < last + threshhold) {
+            // hold on to it
+            clearTimeout(deferTimer);
+            deferTimer = setTimeout(function () {
+                last = now;
+                fn.apply(context, args);
+            }, threshhold);
+        } else {
+            last = now;
+            fn.apply(context, args);
+        }
     };
 }
 
@@ -101,8 +109,8 @@ function initXYTX(ref) {
             // Send update
             if (prevDX !== dX || prevDY !== dY) {
                 ref.set({
-                    dx : dX,
-                    dy : dY
+                    dx : -dX,
+                    dy : -dY
                 });
             }
 
@@ -112,6 +120,12 @@ function initXYTX(ref) {
     }
 
     function onTouchEnd() {
+        ref.set({
+            dx         : dX,
+            dy         : dY,
+            isTouchEnd : true
+        });
+
         dX     = 0;
         prevDX = 0;
         dY     = 0;
@@ -119,7 +133,7 @@ function initXYTX(ref) {
     }
 
     window.addEventListener('touchstart', onTouchStart);
-    window.addEventListener('touchmove', _debounce(onTouchMove, 25));
+    window.addEventListener('touchmove', throttle(onTouchMove, 25));
     window.addEventListener('touchend', onTouchEnd);
 }
 

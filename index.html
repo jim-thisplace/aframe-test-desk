@@ -23,6 +23,7 @@
     </a-camera>
 
     <!-- SCENE -->
+    <!--
     <a-plane
             id="floor"
             rotation="-90 51 0" position="0.73 -7.98 5.19"
@@ -42,12 +43,23 @@
              material="src:;transparent:true;opacity:0.58;color:#6afbe4"
              geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
 
+-->
+
     <a-cylinder id="bikestand" material="color:#ff82f1;metalness:0.28;roughness:1"
-                geometry="primitive:cylinder;height:11.620000000000001;radius:0.24" position="-3.09 0.38 14.77">
+                rotation="0 51 0"
+                geometry="primitive:cylinder;height:11.620000000000001;radius:0.24" position="-3.09 0 14.77">
+        <a-plane
+                material="opacity: 0.5; color: #444444; side: double"
+                position="0 6 0"
+                rotation="90 0 0"
+        ></a-plane>
 
+        <a-plane
+                material="opacity: 0.5; color: #444444; side: double"
+                position="0 -6 0"
+                rotation="90 0 0"
+                ></a-plane>
     </a-cylinder>
-
-    <a-box id="controlledBox" rotation="0 0 0"></a-box>
 
     <a-entity id="skybox" cubemap="folder:assets/room/"></a-entity>
 
