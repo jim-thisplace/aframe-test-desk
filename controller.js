@@ -36,6 +36,7 @@ function printDeviceId(){
 function onSessionsValue() {
     var ref = firebase.database().ref('sessions/' + DEVICE_ID);
 
+
     printDeviceId();
     $('#firebase_status').innerHTML = '<span style="color: green">Connected</span>';
 
@@ -48,6 +49,8 @@ function onSessionsValue() {
             ].join(' ')
         });
     }
+
+    var gn = new GyroNorm();
 
     gn
         .init({ frequency : 25, decimalCount : 0 })
