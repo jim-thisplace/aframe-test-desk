@@ -38,6 +38,7 @@ copy the resultant HTML
 [Firebase console](https://console.firebase.google.com/)
 
 - [Dynamic mesh modification](https://github.com/mrdoob/three.js/issues/1091)
+- [Embedding Google Street View images into AFrame](http://stackoverflow.com/questions/39919377/can-i-embed-google-street-view-into-aframe)
 
 ## Blender Recap
 
