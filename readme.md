@@ -41,6 +41,12 @@ copy the resultant HTML
 - [Embedding Google Street View images into AFrame](http://stackoverflow.com/questions/39919377/can-i-embed-google-street-view-into-aframe)
 
 - [Bitmap fonts at good at any distance](https://github.com/bryik/aframe-bmfont-text-component)
+- [Templating](https://github.com/ngokevin/aframe-template-component) for AFrame scene nodes
+
+- Cursor component doesn't filter elements like raycaster component does
+- AR foundation: [aframe-passthrough](https://github.com/flysonic10/aframe-passthrough) (get live camera image)
+
+- HTMLElement.appendChild doesn't work. Use HTMLElement.insertAdjacentHTML() instead.
 
 ## Blender Recap
 
