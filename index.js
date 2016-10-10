@@ -40,9 +40,9 @@ function getFPVertexHTML(vec3) {
     return '<a-sphere mixin="fpVertex" position="' + AFRAME.utils.coordinates.stringify(vec3) + '"></a-sphere>';
 }
 
-function getFPLineHTML(from, to){
-    var stringify= AFRAME.utils.coordinates.stringify;
-    return '<a-entity mixin="fpLine" line="path: ' + stringify(from) + ',' + stringify(to) +'"></a-entity>';
+function getFPLineHTML(from, to) {
+    var stringify = AFRAME.utils.coordinates.stringify;
+    return '<a-entity mixin="fpLine" line="path: ' + stringify(from) + ',' + stringify(to) + '"></a-entity>';
 }
 
 function addFPVertex() {
@@ -50,7 +50,7 @@ function addFPVertex() {
 
     var lastPoint = STATE.fpVertices[0];
 
-    if(lastPoint) {
+    if (lastPoint) {
         EL.scene.insertAdjacentHTML('beforeend', getFPLineHTML(lastPoint, point));
     }
 
@@ -58,10 +58,24 @@ function addFPVertex() {
     EL.scene.insertAdjacentHTML('beforeend', getFPVertexHTML(point));
 }
 
+function addFPPolygon() {
+    var polygonEntity = '<a-entity mixin="fpPlane" polygon="path:' +
+        STATE.fpVertices
+            .map(AFRAME.utils.coordinates.stringify)
+            .join(',')
+        + '"></a-entity>';
+
+    EL.scene.insertAdjacentHTML('beforeend', polygonEntity);
+}
+
 function onKeyPress(e) {
-    // Spacebar
     if (e.which === 32) {
+        // Spacebar
         addFPVertex();
+
+    } else if (e.which === 13) {
+        // Enter
+        addFPPolygon();
     }
 }
 
