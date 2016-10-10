@@ -40,6 +40,8 @@ copy the resultant HTML
 - [Dynamic mesh modification](https://github.com/mrdoob/three.js/issues/1091)
 - [Embedding Google Street View images into AFrame](http://stackoverflow.com/questions/39919377/can-i-embed-google-street-view-into-aframe)
 
+- [Bitmap fonts at good at any distance](https://github.com/bryik/aframe-bmfont-text-component)
+
 ## Blender Recap
 
 - [Blender HotKeys](https://wiki.blender.org/index.php/Doc:2.4/Reference/Hotkeys/Edit)

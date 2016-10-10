@@ -1,52 +1,29 @@
-var assetsEl;
-var controlledBoxEl;
-var bikestandEl;
+var EL = {
+    'cursor'            : null,
+    'floor'             : null,
+    'floorCursorSphere' : null,
+    'floorCursorLine'   : null
+};
 
-function $(selector) {
-    return document.querySelector(selector);
+
+function onFloorRaycasterIntersected(e) {
+    var vec3 = e.detail.intersection.point;
+    setFloorCursorPosition(vec3);
+    setFloorCursorPosition(vec3);
 }
 
-var bikestandPosition;
-var lastDx = 0;
-var lastDy = 0;
-
-var SCALE_FACTOR = 0.15;
-
-function onSessionsValue(data) {
-    var res = data.val();
-
-    if (res.isTouchEnd) {
-
-        bikestandPosition.x += lastDx;
-        bikestandPosition.z += lastDy;
-
-    } else {
-        lastDx = res.dx * SCALE_FACTOR;
-        lastDy = res.dy * SCALE_FACTOR;
-
-        bikestandEl.setAttribute('position', {
-            x : bikestandPosition.x + lastDx,
-            y : 0,
-            z : bikestandPosition.z + lastDy
-        });
-
-    }
-
+function setFloorCursorPosition(vec3) {
+    EL.floorCursorSphere.setAttribute('position', vec3);
+    EL.floorCursorLine.setAttribute('line', 'path: 0 0 0, '+
+        AFRAME.utils.coordinates.stringify(vec3)
+    );
 }
 
 function onDOMContentLoaded() {
-    bikestandEl     = $('#bikestand');
-    assetsEl        = $('a-assets');
-    controlledBoxEl = $('#controlledBox');
+    // Run all values as selectors and save in place
+    Object.keys(EL).forEach(function (k) { EL[k] = document.getElementById(k);});
 
-    var deviceId = location.hash.slice(1) || localStorage.getItem('deviceId');
-
-    bikestandPosition = bikestandEl.getAttribute('position');
-
-    localStorage.setItem('deviceId', deviceId);
-
-    firebase.database().ref('sessions/' + deviceId)
-        .on('value', onSessionsValue);
+    EL.floor.addEventListener('raycaster-intersected', onFloorRaycasterIntersected);
 }
 
 document.addEventListener('DOMContentLoaded', onDOMContentLoaded);

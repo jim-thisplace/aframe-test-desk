@@ -2,6 +2,7 @@
 <head>
     <script src="lib/aframe.0.3.0.min.js"></script>
     <script src="lib/aframe-cubemap-component.js"></script>
+    <script src="lib/aframe-line-component.js"></script>
     <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
     <script src="firebase-config.js"></script>
     <script src="index.js"></script>
@@ -9,57 +10,25 @@
 <body>
 
 <a-scene>
-    <a-assets>
-
-    </a-assets>
+    <a-assets></a-assets>
 
 
     <!-- CAMERA -->
     <a-camera>
-        <a-cursor raycaster="far: 20; interval: 1000; objects: .clickable"
-                  material="color: #aaff22; shader: flat; opacity: 0.5"
-        >
-        </a-cursor>
+        <a-cursor cursor raycaster="objects: #floor"
+        position="0 0 -1"
+        geometry="primitive: ring"
+        material="color: black; shader: flat"></a-cursor>
     </a-camera>
 
     <!-- SCENE -->
-    <!--
-    <a-plane
-            id="floor"
-            rotation="-90 51 0" position="0.73 -7.98 5.19"
-            material="src:;transparent:true;opacity:0.58;color:#ff8260"
-            geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
 
-    <a-plane id="ceiling" rotation="90 51 0" position="6.1 7.1 5.92"
-             material="src:;transparent:true;opacity:0.58;color:#ff8260"
-             geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
+    <a-entity id="floorCursorLine" line="path: 0 0 0, 0 0 0"></a-entity>
+    <a-sphere id="floorCursorSphere" color="#dd2222" radius="0.2" id="cursor" material="opacity:0.6"></a-sphere>
 
-    <a-plane
-            id="window"
-            rotation="0 51 0" position="-8.08 -7.98 -1.75" material="src:;transparent:true;opacity:0.58;color:#4b7dfc"
-            geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
 
-    <a-plane id="kitchen" rotation="0 -39 0" position="14.63 -7.98 -4.26"
-             material="src:;transparent:true;opacity:0.58;color:#6afbe4"
-             geometry="primitive:plane;width:32.54;height:22.54"></a-plane>
+    <a-plane id="floor" width="4" height="4" rotation="-90 0 0" material="color: #222222"></a-plane>
 
--->
-
-    <a-cylinder id="bikestand" material="color:#ff82f1;metalness:0.28;roughness:1"
-                rotation="0 51 0"
-                geometry="primitive:cylinder;height:11.620000000000001;radius:0.24" position="-3.09 0 14.77">
-        <a-plane
-                material="opacity: 0.5; color: #444444; side: double"
-                position="0 6 0"
-                rotation="90 0 0"
-        ></a-plane>
-
-        <a-plane
-                material="opacity: 0.5; color: #444444; side: double"
-                position="0 -6 0"
-                rotation="90 0 0"
-                ></a-plane>
-    </a-cylinder>
 
     <a-entity id="skybox" cubemap="folder:assets/room/"></a-entity>
 
